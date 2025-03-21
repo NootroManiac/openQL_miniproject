@@ -6,8 +6,8 @@ class EmailDetector:
     def __init__(self):
         # Initialize the sentiment analysis pipeline for detecting AI-generated content
         self.sentiment_analyzer = pipeline("sentiment-analysis")
-        # Initialize the text classification pipeline for phishing detection
-        self.text_classifier = pipeline("text-classification", model="microsoft/deberta-v3-base")
+        # Initialize the text classification pipeline for phishing detection using a different model
+        self.text_classifier = pipeline("text-classification", model="distilbert-base-uncased")
         
         # Common phishing patterns
         self.phishing_patterns = [

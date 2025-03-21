@@ -1,0 +1,22 @@
+Test Files for AI Threat Detection System
+
+1. Voice Test Files (WAV format):
+- human_voice.wav: Record a natural human voice speaking
+- ai_generated_voice.wav: Generate using text-to-speech or voice cloning tools
+- mixed_voice.wav: Combine both human and AI-generated voice
+
+2. Video Test Files (MP4 format):
+- real_video.mp4: Record a natural video
+- deepfake_video.mp4: Create using deepfake generation tools
+- mixed_video.mp4: Video containing both real and deepfake segments
+
+You can obtain test files from these sources:
+1. Record your own samples
+2. Use publicly available datasets
+3. Generate using AI tools (with appropriate permissions)
+
+Note: Ensure test files are:
+- In the correct format (WAV for audio, MP4 for video)
+- Short duration (10-30 seconds)
+- Clear quality
+- Properly labeled 

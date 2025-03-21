@@ -4,19 +4,29 @@ from pydantic import BaseModel
 import uvicorn
 from typing import Optional
 import os
-from dotenv import load_dotenv
+import logging
 
-# Import our detection modules
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+# Import detectors
 from detectors.email_detector import EmailDetector
 from detectors.voice_detector import VoiceDetector
 from detectors.video_detector import VideoDetector
 
-# Load environment variables
-load_dotenv()
+# Initialize detectors
+email_detector = EmailDetector()
+voice_detector = VoiceDetector()
+video_detector = VideoDetector()
 
+# Create FastAPI app
 app = FastAPI(
     title="AI Threat Detection System",
-    description="A comprehensive system for detecting AI-generated threats including deepfakes and phishing",
+    description="A comprehensive system for detecting AI-generated threats",
     version="1.0.0"
 )
 
@@ -28,11 +38,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Initialize detectors
-email_detector = EmailDetector()
-voice_detector = VoiceDetector()
-video_detector = VideoDetector()
 
 class EmailRequest(BaseModel):
     subject: str
@@ -46,6 +51,20 @@ class DetectionResponse(BaseModel):
     threat_type: str
     details: dict
 
+@app.get("/")
+async def root():
+    """
+    Root endpoint to check if the server is running
+    """
+    return {"status": "ok", "message": "AI Threat Detection System is running"}
+
+@app.get("/health")
+async def health_check():
+    """
+    Health check endpoint
+    """
+    return {"status": "healthy"}
+
 @app.post("/detect/email", response_model=DetectionResponse)
 async def detect_email_threat(email: EmailRequest):
     """
@@ -55,6 +74,7 @@ async def detect_email_threat(email: EmailRequest):
         result = email_detector.analyze(email.dict())
         return DetectionResponse(**result)
     except Exception as e:
+        logger.error(f"Error in email detection: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/detect/voice", response_model=DetectionResponse)
@@ -76,6 +96,7 @@ async def detect_voice_threat(audio_file: UploadFile = File(...)):
         
         return DetectionResponse(**result)
     except Exception as e:
+        logger.error(f"Error in voice detection: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/detect/video", response_model=DetectionResponse)
@@ -97,7 +118,30 @@ async def detect_video_threat(video_file: UploadFile = File(...)):
         
         return DetectionResponse(**result)
     except Exception as e:
+        logger.error(f"Error in video detection: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    try:
+        print("\n" + "="*50)
+        print("Starting AI Threat Detection System...")
+        print("Server will be available at: http://127.0.0.1:8000")
+        print("API Documentation at: http://127.0.0.1:8000/docs")
+        print("Health check at: http://127.0.0.1:8000/health")
+        print("="*50 + "\n")
+        
+        uvicorn.run(
+            "main:app",
+            host="127.0.0.1",
+            port=8000,
+            reload=True,
+            log_level="info"
+        )
+    except Exception as e:
+        logger.error(f"Failed to start server: {str(e)}")
+        print(f"\nError: {str(e)}")
+        print("\nTroubleshooting steps:")
+        print("1. Make sure port 8000 is not in use")
+        print("2. Try running with administrator privileges")
+        print("3. Check your firewall settings")
+        print("4. Try using 'localhost' instead of '127.0.0.1'")
