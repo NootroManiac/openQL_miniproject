@@ -2,7 +2,8 @@
 # ai-security-mini-project
 
 # AI Threat Detection System
-Coded using LLm's
+Coded using LLM's
+
 A comprehensive system for detecting AI-generated threats including deepfakes, voice impersonation, and phishing emails.
 
 ## Features
