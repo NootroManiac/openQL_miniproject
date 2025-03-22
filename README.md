@@ -2,7 +2,7 @@
 # ai-security-mini-project
 
 # AI Threat Detection System
-
+Coded using LLm's
 A comprehensive system for detecting AI-generated threats including deepfakes, voice impersonation, and phishing emails.
 
 ## Features
@@ -43,7 +43,8 @@ python main.py
 ```
 
 2. The API will be available at `http://localhost:8000`
-
+3. Run the test_detectors.py file in a different terminal and modify the requests. Alternatively, go and send your own JSON requests.
+3. Add .wav and .mov files to the test files folder and rename your files to the correct keywords. Alternatively, go and send your own JSON requests. (it works without files as well)
 3. API Endpoints:
 
    - Email Detection:
