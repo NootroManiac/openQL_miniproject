@@ -1,0 +1,20 @@
+{
+  "is_threat": false,
+  "confidence": 0.06,
+  "threat_type": "legitimate",
+  "details": {
+    "pattern_matches": [
+      "security alert",
+      "verify your identity"
+    ],
+    "sentiment_analysis": {
+      "label": "NEGATIVE",
+      "score": 0.8146893978118896
+    },
+    "text_classification": {
+      "label": "LABEL_0",
+      "score": 0.5187438726425171
+    },
+    "sender": "security@example.com"
+  }
+}
