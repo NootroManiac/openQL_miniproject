@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # ai-security-mini-project
 =======
+=======
+>>>>>>> 21b402bb860a5f49bd0d560b67f3922910a37724
 # AI Threat Detection System
 
 A comprehensive system for detecting AI-generated threats including deepfakes, voice impersonation, and phishing emails.
@@ -106,5 +109,9 @@ MIT License
 
 ## Contributing
 
+<<<<<<< HEAD
 Contributions are welcome! Please feel free to submit a Pull Request. 
 >>>>>>> 5e754e6 (commiting my initial project)
+=======
+Contributions are welcome! Please feel free to submit a Pull Request. 
+>>>>>>> 21b402bb860a5f49bd0d560b67f3922910a37724
