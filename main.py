@@ -4,7 +4,6 @@ from pydantic import BaseModel
 import uvicorn
 from typing import Optional
 import os
-<<<<<<< HEAD
 import logging
 
 # Configure logging
@@ -15,16 +14,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Import detectors
-=======
-from dotenv import load_dotenv
-
-# Import our detection modules
->>>>>>> 21b402bb860a5f49bd0d560b67f3922910a37724
 from detectors.email_detector import EmailDetector
 from detectors.voice_detector import VoiceDetector
 from detectors.video_detector import VideoDetector
 
-<<<<<<< HEAD
 # Initialize detectors
 email_detector = EmailDetector()
 voice_detector = VoiceDetector()
@@ -34,14 +27,6 @@ video_detector = VideoDetector()
 app = FastAPI(
     title="AI Threat Detection System",
     description="A comprehensive system for detecting AI-generated threats",
-=======
-# Load environment variables
-load_dotenv()
-
-app = FastAPI(
-    title="AI Threat Detection System",
-    description="A comprehensive system for detecting AI-generated threats including deepfakes and phishing",
->>>>>>> 21b402bb860a5f49bd0d560b67f3922910a37724
     version="1.0.0"
 )
 
@@ -54,14 +39,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-<<<<<<< HEAD
-=======
-# Initialize detectors
-email_detector = EmailDetector()
-voice_detector = VoiceDetector()
-video_detector = VideoDetector()
-
->>>>>>> 21b402bb860a5f49bd0d560b67f3922910a37724
 class EmailRequest(BaseModel):
     subject: str
     body: str
@@ -74,7 +51,6 @@ class DetectionResponse(BaseModel):
     threat_type: str
     details: dict
 
-<<<<<<< HEAD
 @app.get("/")
 async def root():
     """
@@ -89,8 +65,6 @@ async def health_check():
     """
     return {"status": "healthy"}
 
-=======
->>>>>>> 21b402bb860a5f49bd0d560b67f3922910a37724
 @app.post("/detect/email", response_model=DetectionResponse)
 async def detect_email_threat(email: EmailRequest):
     """
@@ -100,10 +74,7 @@ async def detect_email_threat(email: EmailRequest):
         result = email_detector.analyze(email.dict())
         return DetectionResponse(**result)
     except Exception as e:
-<<<<<<< HEAD
         logger.error(f"Error in email detection: {str(e)}")
-=======
->>>>>>> 21b402bb860a5f49bd0d560b67f3922910a37724
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/detect/voice", response_model=DetectionResponse)
@@ -125,10 +96,7 @@ async def detect_voice_threat(audio_file: UploadFile = File(...)):
         
         return DetectionResponse(**result)
     except Exception as e:
-<<<<<<< HEAD
         logger.error(f"Error in voice detection: {str(e)}")
-=======
->>>>>>> 21b402bb860a5f49bd0d560b67f3922910a37724
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/detect/video", response_model=DetectionResponse)
@@ -150,7 +118,6 @@ async def detect_video_threat(video_file: UploadFile = File(...)):
         
         return DetectionResponse(**result)
     except Exception as e:
-<<<<<<< HEAD
         logger.error(f"Error in video detection: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -178,9 +145,3 @@ if __name__ == "__main__":
         print("2. Try running with administrator privileges")
         print("3. Check your firewall settings")
         print("4. Try using 'localhost' instead of '127.0.0.1'")
-=======
-        raise HTTPException(status_code=500, detail=str(e))
-
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
->>>>>>> 21b402bb860a5f49bd0d560b67f3922910a37724
