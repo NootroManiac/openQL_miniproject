@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 
 # ai-security-mini-project
 
+=======
+# ai-security-mini-project
+>>>>>>> bf0e71c (This is no bueno)
 # AI Threat Detection System
 Coded using LLM's
 
@@ -106,3 +110,7 @@ Additionally, the responses are saved into a JSON file and printed into the term
 
 MIT License
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf0e71c (This is no bueno)

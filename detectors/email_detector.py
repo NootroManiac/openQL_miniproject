@@ -1,6 +1,7 @@
 from transformers import pipeline
 import re
 from typing import Dict, Any
+from pythonfuzz.main import PythonFuzz
 
 class EmailDetector:
     def __init__(self):
@@ -77,3 +78,42 @@ class EmailDetector:
                 "sender": email_data['sender']
             }
         } 
+    
+'''
+@PythonFuzz
+def fuzz(buf):
+    fuzzer = EmailDetector()
+
+    try:
+        string = buf.decode("ascii")
+        email_data = {
+            "subject": string[:12],  
+            "body": string,         
+            "sender": "test@example.com"  
+        }
+        fuzzer.analyze(email_data)
+    except UnicodeDecodeError:
+        pass
+        
+if __name__ == '__email_detector__':
+    fuzz()
+'''
+def Email_Mutator(data, max_size, seed):
+    email_data = {
+            "subject": string[:12],  
+            "body": string,         
+            "sender": "test@example.com"  
+        }
+    
+    try:
+        json_str = data.decode("utf-8", errors="ignore")
+        email_data["subject"] = json_str[:12]
+        email_data["body"] = json_str
+        email_data["sender"] = "fuzzer@example.com"
+    except :
+        email_data = {
+            "subject": "Hello world!",
+            "body": "This is the body of the email.",
+            "sender": "fuzzer@example.com"
+        }
+    return email_data
