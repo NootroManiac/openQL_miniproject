@@ -96,4 +96,4 @@ class VoiceDetector:
             }
             
         except Exception as e:
-            raise Exception(f"Error analyzing audio file: {str(e)}") 
+            raise Exception(f"Error analyzing audio file: {str(e)}")

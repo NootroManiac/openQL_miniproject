@@ -2,14 +2,14 @@ import cv2
 import numpy as np
 from typing import Dict, Any
 import torch
-from transformers import AutoImageProcessor, AutoModelForImageClassification
+from transformers import AutoFeatureExtractor, AutoModelForImageClassification
 from PIL import Image
 import os
 
 class VideoDetector:
     def __init__(self):
         # Initialize the image classification model for deepfake detection
-        self.processor = AutoImageProcessor.from_pretrained("microsoft/resnet-50")
+        self.processor = AutoFeatureExtractor.from_pretrained("microsoft/resnet-50")
         self.model = AutoModelForImageClassification.from_pretrained("microsoft/resnet-50")
         
         # Video processing parameters
@@ -123,4 +123,4 @@ class VideoDetector:
             }
             
         except Exception as e:
-            raise Exception(f"Error analyzing video file: {str(e)}") 
+            raise Exception(f"Error analyzing video file: {str(e)}")
