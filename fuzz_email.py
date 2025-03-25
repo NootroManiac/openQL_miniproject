@@ -1,6 +1,5 @@
 from pythonfuzz.main import PythonFuzz
 from detectors.email_detector import EmailDetector
-i
 detector = EmailDetector()
 
 @PythonFuzz
