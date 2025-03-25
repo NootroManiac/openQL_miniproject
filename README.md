@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 
 # ai-security-mini-project
-
-=======
-# ai-security-mini-project
->>>>>>> bf0e71c (This is no bueno)
 # AI Threat Detection System
 Coded using LLM's
 
@@ -26,6 +21,9 @@ A comprehensive system for detecting AI-generated threats including deepfakes, v
   - Frame-by-frame analysis
   - Deep learning-based classification
   - Support for various video formats
+
+  Fuzzing is supported with the email phishing dectection function
+  
 
 ## Installation
 
@@ -110,7 +108,3 @@ Additionally, the responses are saved into a JSON file and printed into the term
 
 MIT License
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bf0e71c (This is no bueno)
