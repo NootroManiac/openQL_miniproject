@@ -1,4 +1,5 @@
 import re
+import atheris
 from typing import Dict, Any
 
 class EmailDetector:
@@ -16,7 +17,7 @@ class EmailDetector:
             r'confirm your details',
             r'update your information'
         ]
-        
+    @atheris.instrument_func
     def analyze(self, email_data: Dict[str, Any]) -> Dict[str, Any]:
         """
         Analyze an email for potential AI-generated phishing threats
