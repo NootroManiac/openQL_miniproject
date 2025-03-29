@@ -1,7 +1,7 @@
 
 # ai-security-mini-project
 # AI Threat Detection System
-Coded using LLM's
+Coded using LLM's.
 
 A comprehensive system for detecting AI-generated threats including deepfakes, voice impersonation, and phishing emails.
 
@@ -36,6 +36,7 @@ cd ai-threat-detection
 2. Install dependencies:
 ```bash
 pip install -r requirements.txt
+#you may want to install requirements after making a virtual environment by following the instructions on the fuzzer installation instructions below
 ```
 
 ## Usage
@@ -79,6 +80,73 @@ python main.py
      video_file: <video file>
      ```
 
+
+## Fuzzing 
+
+Install this repository by following the installation steps
+
+Download Python 3.9.18 
+
+Tutorial on how to install Python 3.9.18 using pyenv
+```bash 
+sudo apt update && sudo apt install -y build-essential curl git libssl-dev zlib1g-dev \
+  libbz2-dev libreadline-dev libsqlite3-dev wget llvm libncursesw5-dev xz-utils tk-dev \
+  libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+```
+Then install pyenv
+```bash
+curl https://pyenv.run | bash
+```
+Then add it to your bash/terminal
+```bash
+nano ~/.bashrc # or use ~/.zshrc
+# pust this at the end of the script/settings
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)" 
+```
+If your stuck in nano then hit ctr w to save and ctr x to exit 
+Reload your shell
+```bash 
+exec "$SHELL"
+```
+Then install python versions
+```bash 
+pyenv install 3.9.18
+pyenv install 3.12.2
+```
+Set the local python verion to 3.9.18
+```bash
+pyenv local 3.9.18
+```
+Then make a virtual environment
+```bash
+python3 -m venv myenv
+```
+Activate the virtual environment
+```bash
+source myenv/bin/activate
+#when your done you can just type deactivate in the terminal
+```
+Download requirements
+```bash 
+pip install -r requirements.txt
+
+```
+Download atheris
+```bash
+pip3 install atheris
+```
+Then run the fuzzing script located at test_files.py
+
+(optional)Download coverage
+```bash
+python3 -m pip install coverage
+
+#run the script by running 
+python3 -m coverage run test_files.py -atheris_runs=100
+```
 ## API Documentation
 
 Once the server is running, visit `http://localhost:8000/docs` for interactive API documentation.

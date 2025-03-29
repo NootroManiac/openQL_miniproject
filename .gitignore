@@ -20,6 +20,13 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+mykey
+mykey.pub
+*.pem
+*.key
+*.pub
+id_*
+
 
 # Virtual Environment
 venv/
