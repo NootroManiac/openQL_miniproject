@@ -100,7 +100,7 @@ curl https://pyenv.run | bash
 Then add it to your bash/terminal
 ```bash
 nano ~/.bashrc # or use ~/.zshrc
-# pust this at the end of the script/settings
+# put this at the end of the script/settings
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
