@@ -32,8 +32,9 @@ def TestPointOne(data):
             "body": fdp.ConsumeString(1000),         
             "sender": "test@example.com"  
     }
-    result = email_detector.EmailDetector.analyze(**email_data) 
-    assert result["is_threat"] == "legitimate"
+    result = email_detector.EmailDetector()
+    result = result.analyze(email_data) 
+    assert result["threat_type"] == "legitimate"
 
 atheris.Setup(sys.argv, TestPointOne)
 atheris.Fuzz()
