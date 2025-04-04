@@ -99,11 +99,11 @@ pip3 install atheris
 ```
 Run fuzzing script located at test_files.py
 
-If you get an warning about numpy tensorflow and libfuzzer its safe to ignore
+If you get an warning about numpy (double long), tensorflow(cuFFT, cuDNN, cuBLAS, computation_placer) and libfuzzer(santizer) its safe to ignore 
 
 (optional)Download coverage
 ```bash
-python3 -m pip install coverage
+python3 -m pip install coverage)
 
 #run the script by running 
 python3 -m coverage run test_files.py -atheris_runs=100
