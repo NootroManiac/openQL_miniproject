@@ -38,76 +38,7 @@ cd ai-threat-detection
 pip install -r requirements.txt
 #you may want to install requirements after making a virtual environment by following the instructions on the fuzzer installation instructions below
 ```
-## Fuzzing 
 
-1) Follow install steps
-
-Download Python 3.9.18 
-
-Install Python 3.9.18 using pyenv
-```bash 
-sudo apt update && sudo apt install -y build-essential curl git libssl-dev zlib1g-dev \
-  libbz2-dev libreadline-dev libsqlite3-dev wget llvm libncursesw5-dev xz-utils tk-dev \
-  libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-```
-
-
-Install pyenv
-```bash
-curl https://pyenv.run | bash
-```
-Add it to your bash/terminal
-```bash
-nano ~/.bashrc # or use ~/.zshrc
-# put this at the end of the script/settings
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)" 
-```
-
-Reload your shell
-```bash 
-exec "$SHELL"
-```
-Install python versions
-```bash 
-pyenv install 3.9.18
-pyenv install 3.12.2
-```
-Set local python verion to 3.9.18
-```bash
-pyenv local 3.9.18
-```
-Make virtual environment
-```bash
-python3 -m venv myenv
-```
-Activate virtual environment
-```bash
-source myenv/bin/activate
-#when your done you can just type deactivate in the terminal
-```
-Download requirements
-```bash 
-pip install -r requirements.txt
-
-```
-Download atheris
-```bash
-pip3 install atheris
-```
-Run fuzzing script located at test_files.py
-
-If you get an warning about numpy (double long), tensorflow(cuFFT, cuDNN, cuBLAS, computation_placer) and libfuzzer(santizer) its safe to ignore 
-
-(optional)Download coverage
-```bash
-python3 -m pip install coverage)
-
-#run the script by running 
-python3 -m coverage run test_files.py -atheris_runs=100
-```
 
 ## Usage
 
