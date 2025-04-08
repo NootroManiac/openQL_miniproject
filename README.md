@@ -2,8 +2,8 @@
 # ai-security-mini-project
 # AI Threat Detection System
 Coded using LLM's.
+This is a copy of my previous project; this will utlized as an example file for my OpenQL query system.
 
-A comprehensive system for detecting AI-generated threats including deepfakes, voice impersonation, and phishing emails.
 
 ## Features
 
@@ -39,6 +39,8 @@ pip install -r requirements.txt
 #you may want to install requirements after making a virtual environment by following the instructions on the fuzzer installation instructions below
 ```
 
+##OpenQL
+Runs locally using the OpenQL cli 
 
 ## Usage
 
